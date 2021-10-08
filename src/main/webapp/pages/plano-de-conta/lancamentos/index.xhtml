@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;">
+				    <f:facet name="title">
+				    <i class="pi pi-users p-mr-2"/>
+				        Lançamentos
+				    </f:facet>
+				
+						<h:form>
+					        <p:menubar>
+					            <p:submenu label="Menu" icon="pi pi-fw">
+					                <p:menuitem value="Novo" icon="pi pi-fw pi-user-plus" />
+					            </p:submenu>
+					
+					            <p:divider layout="vertical"/>
+					        </p:menubar>
+					    </h:form>
+					
+					<p:divider/>
+						<h:form id="form-datatable">
+							
+						        <p:dataTable id="lancamentos" 
+						        			 var="lancamento" 
+						        			 value="#{lancamentoController.listaLancamentos}" 
+						        			 rowKey="#{lancamento.id}"
+						                     selectionMode="single"
+						                     scrollable="true"
+						                     scrollHeight="250"
+						                     scrollWidth="100%"
+						                     rows="200"
+						                     showGridlines="true"
+						                     >
+						            <p:column headerText="Item" footerText="Item">
+						                <h:outputText value="Água" />
+						            </p:column>
+						            <p:column headerText="Tipo" footerText="Tipo">
+						                <h:outputText value="Despesa" />
+						            </p:column>
+						            <p:column headerText="Janeiro" footerText="Janeiro">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Fevereiro" footerText="Fevereiro">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Março" footerText="Março">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Abril" footerText="Abril">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Maio" footerText="Maio">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Junho" footerText="Junho">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Julho" footerText="Julho">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Agosto" footerText="Agosto">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Setembro" footerText="Setembro">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Outubro" footerText="Outubro">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Novembro" footerText="Novembro">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            <p:column headerText="Dezembro" footerText="Dezembro">
+						                <h:outputText value="R$ 54,98"/>
+						            </p:column>
+						            
+						            <p:column headerText="Ações" footerText="Ações">
+						                <p:commandButton id="dynaButton" value="Opções" type="button" icon="pi pi-bars"/>
+								        <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+								            <p:submenu label="Opções">
+								                <p:menuitem ajax="false" value="Editar" action="#{usuarioController.editar(usuario)}" icon="pi pi-pencil"/>
+								            </p:submenu>
+								        </p:menu>
+						            </p:column>
+						        </p:dataTable>
+					    </h:form>					
+				</p:card>
+			</ui:define>
+	    </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition>
+			<div class="corpo-conteudo">
+				<div class="menu">
+					<h:form>
+				        <p:menu>
+				        	<p:submenu label="Geral">
+				                <p:menuitem 
+				                	value="Dashboard"
+				                	action="/pages/dashboard/index.xhtml?faces-redirect=true" 
+				                	icon="pi pi-th-large" />
+				                <p:menuitem 
+				                	value="Usuarios"
+				                	action="/pages/usuarios/index.xhtml?faces-redirect=true" 
+				                	rendered="#{templateController.usuarioLogado.perfil.value == 1}"
+				                	icon="pi pi-users"/>
+				            </p:submenu>
+				            <p:submenu label="Financeiro">
+				            	<p:menuitem 
+				                	value="Plano de conta" 
+				                	icon="pi pi-book"/>
+				                <p:menuitem 
+				                	value="Receitas"
+				                	icon="pi pi-chevron-circle-left"/>
+				                <p:menuitem 
+				                	value="Despesas"
+				                	icon="pi pi-chevron-circle-right"/>
+				            </p:submenu>
+				        </p:menu>
+					</h:form>
+				</div>
+				
+				
+				<div class="container">
+					<ui:insert name="conteudo" >
+					  
+					</ui:insert>
+				</div>
+			</div>
+	    </ui:composition>
+    </body>
+</html>

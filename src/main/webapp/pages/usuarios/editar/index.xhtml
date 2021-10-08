@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;" rendered="#{editarUsuarioController.vazio == false}">
+				    <f:facet name="title">
+				    <i class="pi pi-pencil p-mr-2"/>
+				        Editar usuário
+				    </f:facet>
+					<p:divider/>
+					<p:messages id="messages"/>	
+						<h:form id="form" rendered="#{editarUsuarioController.vazio == false}">			
+							<div class="p-grid ui-fluid">
+					            <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+					                    <p:inputText value="#{editarUsuarioController.usuario.nome}" placeholder="Nome"/>
+					                </div>
+					            </div>
+					            
+					            <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+					                    <p:inputText value="#{editarUsuarioController.usuario.email}" placeholder="E-mail"/>
+					                </div>
+					            </div>
+					        	
+					        	 <div class="p-col-12 p-md-4">
+							         <div class="ui-inputgroup">
+							         	<span class="ui-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+						               	<p:selectOneMenu id="option" value="#{editarUsuarioController.usuario.perfil}">
+						                    <f:selectItems value="#{editarUsuarioController.listaPerfil}" var="obj" itemLabel="#{obj.label}"/>
+						                </p:selectOneMenu>
+						             </div>
+						         </div>
+						         
+						         <div class="p-col-12 p-md-4">
+						         	<div class="ui-inputgroup">
+						                <span class="ui-inputgroup-addon"><i class="pi pi-calendar-times"></i></span>
+						                <p:datePicker id="date" placeholder="Expiração de conta - (dd-mm-aaaa)" value="#{editarUsuarioController.usuario.dataExpiracao}" />
+					                </div>
+					            </div>
+					            				
+					        	<p:commandButton 
+					        		type="submit" 
+					        		ajax = "false"
+					        		action="#{editarUsuarioController.editar()}" 
+					        		value="Confirmar"/>
+					        </div>
+					        
+					    </h:form>	
+				</p:card>
+			</ui:define>
+	    </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;">
+				    <f:facet name="title">
+				    <i class="pi pi-users p-mr-2"/>
+				        Usuários
+				    </f:facet>
+				
+						<h:form>
+					        <p:menubar>
+					            <p:submenu label="Menu" icon="pi pi-fw pi-user">
+					                <p:menuitem value="Novo" icon="pi pi-fw pi-user-plus" action="/pages/usuarios/cadastrar/index.xhtml?faces-redirect=true" />
+					            </p:submenu>
+					
+					            <p:divider layout="vertical"/>
+					
+					            <f:facet name="options">
+					                <div class="ui-input-icon-left p-mr-2">
+					                    <i class="pi pi-fw pi-search" />
+					                    <p:inputText placeholder="Pesquisar"/>
+					                </div>
+					            </f:facet>
+					        </p:menubar>
+					    </h:form>
+					
+					<p:divider/>
+						<h:form id="form-datatable">
+							
+						        <p:dataTable id="usuarios" 
+						        			 var="usuario" 
+						        			 value="#{usuarioController.listaUsuario}" 
+						        			 rowKey="#{usuario.id}"
+						                     selectionMode="single"
+						                     selection="#{usuarioController.usuarioSelecionado}"
+						                     paginator="true"
+						                     rows="5"
+						                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						                     currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+						                     rowsPerPageTemplate="5,10,{ShowAll|'Tudo'}">
+						            <p:column headerText="Nome" footerText="Nome">
+						                <h:outputText value="#{usuario.nomeCompleto}" />
+						            </p:column>
+						            <p:column headerText="Email" footerText="Email">
+						                <h:outputText value="#{usuario.email}" />
+						            </p:column>
+						            <p:column headerText="Perfil" footerText="Perfil">
+						                <h:outputText value="#{usuario.perfil.label}" />
+						            </p:column>
+						            <p:column headerText="Cadastro" footerText="Cadastro">
+						                <h:outputText value="#{usuario.dataCadastro}">
+						                	<f:convertDateTime type="Date" pattern="dd/MM/yyyy"/>
+						                </h:outputText>
+						            </p:column>
+						            
+						             <p:column headerText="Expiração" footerText="Expiração">
+						                <h:outputText value="#{usuario.dataExpiracao}">
+						                	<f:convertDateTime type="Date" pattern="dd/MM/yyyy"/>
+						                </h:outputText>
+						            </p:column>
+						         
+						            <p:column headerText="Ações" footerText="Ações">
+						                <p:commandButton id="dynaButton" value="Opções" type="button" icon="pi pi-bars"/>
+								        <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+								            <p:submenu label="Opções">
+								                <p:menuitem ajax="false" value="Editar" action="#{usuarioController.editar(usuario)}" icon="pi pi-pencil"/>
+								            </p:submenu>
+								        </p:menu>
+						            </p:column>
+						        </p:dataTable>
+					    </h:form>					
+				</p:card>
+			</ui:define>
+	    </ui:composition>
+    </body>
+</html>

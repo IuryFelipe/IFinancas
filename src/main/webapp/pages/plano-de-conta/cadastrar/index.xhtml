@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;">
+				    <f:facet name="title">
+				    <i class="pi pi-plus-circle p-mr-2"/>
+				        Novo Item de Plano de Conta
+				    </f:facet>
+					<p:divider/>
+						<h:form id="form">
+						 <p:messages id="messages" showDetail="false" closable="true">
+					            <p:autoUpdate/>
+					     </p:messages>
+						
+							<div class="p-grid ui-fluid">
+					            <div class="p-col-12 p-md-4">
+					            	<span class="badge badge-secondary">Nome do item</span>
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-ticket"></i></span>
+					                    <p:inputText value="#{novoItemPlanoDeContaController.planoDeConta.nome}" placeholder="Nome"/>
+					                </div>
+					            </div>
+					        	
+					        	 <div class="p-col-12 p-md-4">
+					        	 	<span class="badge badge-success">Receita</span> ou
+					        	 	<span class="badge badge-danger">Despesa</span>?
+							         <div class="ui-inputgroup">
+							         	<span class="ui-inputgroup-addon"><i class="pi pi-sort-alt"></i></span>
+						               	<p:selectOneMenu id="tipoplano" value="#{novoItemPlanoDeContaController.planoDeConta.tipoPlano}">
+						                    <f:selectItems value="#{novoItemPlanoDeContaController.listaTipoPlano}" var="obj" itemLabel="#{obj.label}"/>
+						                </p:selectOneMenu>
+						             </div>
+						         </div>
+						         
+						         <div class="p-col-12 p-md-4">
+						         <span class="badge badge-secondary">Em qual categoria se encaixa?</span>
+							         <div class="ui-inputgroup">
+							         	<span class="ui-inputgroup-addon"><i class="pi pi-tag"></i></span>
+						               	<p:selectOneMenu id="categoriaconta" value="#{novoItemPlanoDeContaController.planoDeConta.categoriaConta}">
+						                    <f:selectItems value="#{novoItemPlanoDeContaController.listaCategoriaConta}" var="obj" itemLabel="#{obj.label}"/>
+						                </p:selectOneMenu>
+						             </div>
+						         </div>			
+					        	<p:commandButton 
+					        		type="submit" 
+					        		ajax = "false" 
+					        		value="Confirmar" 
+					        		action="#{novoItemPlanoDeContaController.incluir}"/>
+					        </div>
+					        
+					    </h:form>	
+				</p:card>
+			</ui:define>
+	    </ui:composition>
+    </body>
+</html>

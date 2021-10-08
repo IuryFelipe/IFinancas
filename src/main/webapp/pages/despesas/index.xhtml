@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <h:body>
+
+    	<ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;">
+				    <f:facet name="title">
+				    	<i class="pi pi-arrow-right p-mr-2"/>
+				        Despesas
+				    </f:facet>	
+				    <h:form>
+				        <p:menubar>
+				            <p:submenu label="Despesa" icon="pi pi-fw pi-user">
+				                <p:menuitem value="Lançar nova" icon="pi pi-fw pi-user-plus"/>
+				                <p:menuitem value="Lançar existente" icon="pi pi-fw pi-user-plus"/>
+				            </p:submenu>
+				            
+				            <p:submenu label="Categoria" icon="pi pi-fw pi-user">
+				                <p:menuitem value="Criar nova" icon="pi pi-fw pi-user-plus"/>
+				                <p:menuitem value="Ver todas" icon="pi pi-fw pi-user-plus"/>
+				            </p:submenu>
+				
+				            <p:divider layout="vertical"/>
+				
+				            <f:facet name="options">
+				                <div class="ui-input-icon-left p-mr-2">
+				                    <i class="pi pi-fw pi-search" />
+				                    <p:inputText placeholder="Pesquisar"/>
+				                </div>
+				            </f:facet>
+				        </p:menubar>
+				    </h:form>
+					
+					<p:divider/>
+				</p:card>
+	    	</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

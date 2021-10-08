@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <body>
+	    <ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;">
+				    <f:facet name="title">
+				    <i class="pi pi-user-plus p-mr-2"/>
+				        Novo usuário
+				    </f:facet>
+					<p:divider/>
+						<h:form id="form">
+						 <p:messages id="messages" showDetail="false" closable="true">
+					            <p:autoUpdate/>
+					     </p:messages>
+						
+							<div class="p-grid ui-fluid">
+					            <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+					                    <p:inputText value="#{novoUsuarioController.usuario.primeiroNome}" placeholder="Nome"/>
+					                </div>
+					            </div>
+					            <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+					                    <p:inputText value="#{novoUsuarioController.usuario.sobrenome}" placeholder="Sobrenome"/>
+					                </div>
+					            </div>
+					            
+					            <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+					                    <p:inputText value="#{novoUsuarioController.usuario.email}" placeholder="E-mail"/>
+					                </div>
+					            </div>
+					        	
+					        	 <div class="p-col-12 p-md-4">
+							         <div class="ui-inputgroup">
+							         	<span class="ui-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+						               	<p:selectOneMenu id="option" value="#{novoUsuarioController.usuario.perfil}">
+						                    <f:selectItems value="#{novoUsuarioController.listaPerfil}" var="obj" itemLabel="#{obj.label}"/>
+						                </p:selectOneMenu>
+						             </div>
+						         </div>
+						         
+						         <div class="p-col-12 p-md-4">
+						         	<div class="ui-inputgroup">
+						                <span class="ui-inputgroup-addon"><i class="pi pi-calendar-times"></i></span>
+						                <p:datePicker locale="pt" mask="99/99/9999" id="date" placeholder="Expiração de conta - (dd-mm-aaaa)" value="#{novoUsuarioController.usuario.dataExpiracao}" />
+					                </div>
+					            </div>
+						         
+						         <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+					                    <p:password value="#{novoUsuarioController.usuario.senha}" placeholder="Senha"/>
+					                </div>
+					            </div>
+					            
+					            <div class="p-col-12 p-md-4">
+					                <div class="ui-inputgroup">
+					                    <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+					                    <p:password value="#{novoUsuarioController.confirmarSenha}" placeholder="Confirmar senha"/>
+					                </div>
+					            </div>				
+					        	<p:commandButton 
+					        		type="submit" 
+					        		ajax = "false" 
+					        		value="Confirmar" 
+					        		action="#{novoUsuarioController.cadastrar()}"/>
+					        </div>
+					        
+					    </h:form>	
+				</p:card>
+			</ui:define>
+	    </ui:composition>
+	    <pre>
+    	<code>
+    		<script type="text/javascript">
+    			console.log('Iniciou');
+		    PrimeFaces.locales['pt'] = {
+		        closeText: 'Fechar',
+		        prevText: 'Anterior',
+		        nextText: 'Pŕoximo',
+		        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+		        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+		        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+		        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+		        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+		        weekHeader: 'Semana',
+		        firstDay: 1,
+		        isRTL: false,
+		        showMonthAfterYear: false,
+		        yearSuffix: '',
+		        timeOnlyTitle: 'Somente hora',
+		        timeText: 'Tempo',
+		        hourText: 'Hora',
+		        minuteText: 'Minuto',
+		        secondText: 'Segundo',
+		        millisecondText: 'Milisegundo',
+		        currentText: 'Fechar atual',
+		        ampm: false,
+		        month: 'Mês',
+		        week: 'Semana',
+		        day: 'Dia',
+		        allDayText: 'Todo o dia',
+		        today: 'Hoje',
+		        clear: 'Limpar'
+		    };
+		</script>
+    	</code>
+    </pre>
+    </body>
+</html>

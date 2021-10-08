@@ -1,0 +1,41 @@
+body{
+	background-color: #f2f2f2;
+}
+
+.principal{
+	
+}
+
+.header{
+	background-color: #ff9933;
+	padding: 10px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: 0px 1px 4px #bfbfbf;
+	color: white;
+}
+
+
+.footer{
+	text-align: center;
+	vertical-align: middle;
+	height: 100px;
+	line-height: 100px;  
+	background-color: gray;
+}
+
+.corpo-conteudo{
+	display: flex;
+}
+
+.conteudo{
+	
+}
+.menu{
+	padding: 10px;
+	width: 200px;
+	display: block;
+	justify-content: center;
+}
+

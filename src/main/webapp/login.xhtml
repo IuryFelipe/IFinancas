@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>IFinancas | Login</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!-- Bootstrap CSS -->
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+		<h:outputStylesheet library="css" name="login.css" />
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<p:card style="width: 25em; margin: 0 auto; display: block; justify-content: center; margin-top: 50px; text-align: center;">
+			    <f:facet name="header">
+			        <img alt="Login Imagem" src="https://financeone.com.br/wp-content/uploads/2019/05/paper-3190198_1920-1-1-1-1024x669.jpg"/>
+			    </f:facet>
+			    <f:facet name="title">
+			        Entrar
+			    </f:facet>
+				
+				<div style="display: block;">
+					  <p:messages id="messages" showDetail="false" closable="false">
+			            <p:autoUpdate/>
+			        </p:messages>
+					<p:inputText placeholder="E-mail" value="#{loginController.email}" required="true" requiredMessage="Digite o email*"/>
+					<p:password placeholder="Senha" style="margin-top: 5px" value="#{loginController.senha}" required="true" requiredMessage="Digite a senha*"/>
+				</div>
+			    <f:facet name="footer">
+	    				<p:commandButton value="Autenticar" action="#{loginController.autenticarUsuario()}"/>
+			    </f:facet>
+			</p:card>
+		</h:form>
+		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+	    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+	        <p:graphicImage name="/assets/loading.gif" height="100" width="100"/>
+	    </p:dialog>
+
+	</h:body>
+</html>

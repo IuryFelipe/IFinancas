@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+    <h:body>
+
+    	<ui:composition template="/template.xhtml">
+			<ui:define name="conteudo">
+				<p:card style="width: 100%; margin: 10px;">
+				    <f:facet name="title">
+				    <i class="pi pi-book p-mr-2"/>
+				        Plano de Conta
+				    </f:facet>
+				
+						<h:form>
+					        <p:menubar>
+					            <p:submenu label="Menu" icon="pi pi-fw pi-book">
+					                <p:menuitem value="Novo item" icon="pi pi-fw pi-plus-circle" action="/pages/plano-de-conta/cadastrar/index.xhtml?faces-redirect=true" />
+					                <p:menuitem value="Dúvida?" icon="pi pi-fw pi-thumbs-up" onclick ="PF('dlg1').show()" />
+					            </p:submenu>
+					            <p:divider layout="vertical"/>
+					
+					            <f:facet name="options">
+					                <div class="ui-input-icon-left p-mr-2">
+					                    <i class="pi pi-fw pi-search" />
+					                    <p:inputText placeholder="Pesquisar"/>
+					                </div>
+					            </f:facet>
+					        </p:menubar>
+					    </h:form>
+						<p:dialog header="Plano de Conta" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade">
+						    <p class="p-m-0">Aqui você fará a construção do seu plano de contas informando o item e se é receita ou despesa.</p>
+						</p:dialog>
+					<p:divider/>
+						<h:form id="form-datatable">
+							
+						        <p:dataTable id="planosdeconta" 
+						        			 var="item" 
+						        			 value="#{planoDeContaController.listaPlanoDeConta}" 
+						        			 rowKey="#{item.id}"
+						                     selectionMode="single"
+						                     paginator="true"
+						                     rows="5"
+						                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						                     currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+						                     rowsPerPageTemplate="5,10,{ShowAll|'Tudo'}">
+						            <p:column headerText="Nome" footerText="Nome">
+						                <h:outputText value="#{item.nome}" />
+						            </p:column>
+						            <p:column headerText="Tipo" footerText="Tipo">
+						                <span class="badge badge-#{item.tipoPlano.label == 'Receita'  ? 'success' : 'danger'}">#{item.tipoPlano.label}</span>
+						               
+						            </p:column>
+						            <p:column headerText="Categoria" footerText="Categoria">
+						                <h:outputText value="#{item.categoriaConta.label}" />
+						            </p:column>
+						            
+						            <p:column headerText="Ações" footerText="Ações">
+						                <p:commandButton id="dynaButton" value="Opções" type="button" icon="pi pi-bars"/>
+								        <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+								            <p:submenu label="Opções">
+								                <p:menuitem ajax="false" value="Editar" action="#{planoDeContaController.editar(item)}" icon="pi pi-pencil"/>
+								                <p:menuitem ajax="false" value="Fazer lançamento" action="#{planoDeContaController.editar(item)}" icon="pi pi-arrow-up"/>
+								                <p:menuitem ajax="false" value="Ver lançamentos" action="#{planoDeContaController.editar(item)}" icon="pi pi-eye"/>
+								            </p:submenu>
+								        </p:menu>
+						            </p:column>
+						        </p:dataTable>
+					    </h:form>
+					
+					<p:divider/>
+									
+				</p:card>
+	    	</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
