@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="IFinancas">
-		<class>br.souza.ifinancas.model.Usuario</class>
 		<class>br.souza.ifinancas.model.DefaultEntity</class>
-		
+		<class>br.souza.ifinancas.model.PessoaFisica</class>
+		<class>br.souza.ifinancas.model.PessoaJuridica</class>
+		<class>br.souza.ifinancas.model.Estado</class>
+		<class>br.souza.ifinancas.model.Cidade</class>
+		<class>br.souza.ifinancas.model.Endereco</class>
+		<class>br.souza.ifinancas.model.Telefone</class>
+		<class>br.souza.ifinancas.model.Usuario</class>
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"

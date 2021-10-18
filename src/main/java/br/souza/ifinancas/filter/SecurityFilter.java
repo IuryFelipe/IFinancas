@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.souza.ifinancas.dto.UsuarioLogadoDTO;
 import br.souza.ifinancas.model.Usuario;
 
 @WebFilter(filterName = "SecurityFilter", urlPatterns = {"/pages/*"})
@@ -55,9 +56,9 @@ public class SecurityFilter implements Filter{
 		// retorna uma sessao corrente (false - nao cria uma sessao)
 		HttpSession session = servletRequest.getSession(false);
 		
-		Usuario usuario = null;
+		UsuarioLogadoDTO usuario = null;
 		if (session != null) 
-			usuario = (Usuario) session.getAttribute("usuarioLogado");
+			usuario = (UsuarioLogadoDTO) session.getAttribute("usuarioLogado");
 		
 		if (usuario == null) {
 			((HttpServletResponse) response).sendRedirect("/IFinancas/login.xhtml");

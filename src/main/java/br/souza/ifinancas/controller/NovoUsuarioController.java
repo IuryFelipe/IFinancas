@@ -18,7 +18,7 @@ public class NovoUsuarioController implements Serializable{
 	private static final long serialVersionUID = 6587891921400730169L;
 	private Usuario usuario = null;
 	private String confirmarSenha = "";
-	
+	/*
 	public String cadastrar() {
 		if (!verificaSenha()) {
 			Util.addErrorMessage("As senhas precisam ser iguais!");
@@ -80,4 +80,5 @@ public class NovoUsuarioController implements Serializable{
 	public void setConfirmarSenha(String confirmarSenha) {
 		this.confirmarSenha = confirmarSenha;
 	}
+	*/
 }

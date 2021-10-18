@@ -1,27 +1,31 @@
 package br.souza.ifinancas.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import br.souza.ifinancas.model.enumeration.Perfil;
 
 @Entity
-public class Usuario extends DefaultEntity{
-	
-	@Column(nullable = false, length = 30, name = "primeiro_nome")
-	private String primeiroNome;
-	
-	@Column(nullable = true, length = 30)
-	private String sobrenome;
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Usuario extends DefaultEntity{
 	
 	@Column(nullable = false, length = 100)
 	private String email;
-	
-	@Transient
-	private String nomeCompleto;
 	
 	@Column(nullable = false)
 	private Date dataExpiracao;
@@ -31,22 +35,15 @@ public class Usuario extends DefaultEntity{
 	
 	@Column(nullable = false)
 	private Perfil perfil;
-
-	public String getPrimeiroNome() {
-		return primeiroNome;
-	}
-
-	public void setPrimeiroNome(String primeiroNome) {
-		this.primeiroNome = primeiroNome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
+	
+	@Column(nullable = false, length = 500)
+	private String imagem;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Endereco endereco;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Telefone> telefones;
 
 	public String getEmail() {
 		return email;
@@ -54,10 +51,6 @@ public class Usuario extends DefaultEntity{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getNomeCompleto() {
-		return getPrimeiroNome() + " " + getSobrenome();
 	}
 
 	public Date getDataExpiracao() {
@@ -84,12 +77,29 @@ public class Usuario extends DefaultEntity{
 		this.perfil = perfil;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [primeiroNome=" + primeiroNome + ", sobrenome=" + sobrenome + ", email=" + email
-				+ ", nomeCompleto=" + nomeCompleto + ", dataExpiracao=" + dataExpiracao + ", senha=" + senha
-				+ ", perfil=" + perfil + "]";
+	public String getImagem() {
+		return imagem;
 	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}	
 	
 	
 }

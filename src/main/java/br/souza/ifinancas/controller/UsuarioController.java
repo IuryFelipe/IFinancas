@@ -21,7 +21,7 @@ public class UsuarioController implements Serializable{
 	private String confirmarSenha;
 	private List<Usuario> listaUsuario = null;
 	private Usuario usuarioSelecionado = null;
-	
+	/*
 	public String editar(Usuario usu) {
 		//UsuarioDAO dao = new UsuarioDAO();
 		//Usuario usuario = dao.obterUm(usu.getId());
@@ -86,5 +86,5 @@ public class UsuarioController implements Serializable{
 		listaUsuario.remove(usuarioSelecionado);
 		usuarioSelecionado = null;
     }
-	
+	*/
 }

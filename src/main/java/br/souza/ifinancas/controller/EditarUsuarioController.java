@@ -21,7 +21,7 @@ public class EditarUsuarioController implements Serializable{
 	private Usuario usuario;
 	private String confirmarSenha = "";
 	private boolean vazio = true;
-	
+	/*
 	public EditarUsuarioController() {
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.keep("usuarioEdicaoFlash");
@@ -67,5 +67,5 @@ public class EditarUsuarioController implements Serializable{
 	public void setVazio(boolean vazio) {
 		this.vazio = vazio;
 	}
-
+	*/
 }

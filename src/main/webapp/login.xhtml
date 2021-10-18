@@ -31,6 +31,7 @@
 					<p:inputText placeholder="E-mail" value="#{loginController.email}" required="true" requiredMessage="Digite o email*"/>
 					<p:password placeholder="Senha" style="margin-top: 5px" value="#{loginController.senha}" required="true" requiredMessage="Digite a senha*"/>
 				</div>
+				<p:selectBooleanCheckbox value="#{loginController.pessoaJuridica}" itemLabel="Sou pessoa juridica"/>
 			    <f:facet name="footer">
 	    				<p:commandButton value="Autenticar" action="#{loginController.autenticarUsuario()}"/>
 			    </f:facet>

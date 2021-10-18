@@ -28,7 +28,6 @@ public class UsuarioRepository extends Repository<Usuario>{
 		}
 	}
 	
-	
 	public boolean findByEmail(String email) throws RepositoryException {
 		try {
 			EntityManager em = getEntityManager();
